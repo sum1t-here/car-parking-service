@@ -1,0 +1,33 @@
+# Node
+node_modules
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.pnpm-debug.log
+
+# Build output
+.next
+out
+dist
+
+# Env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Lockfiles (optional if using multiple package managers)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+bun.lock
+
+# Coverage / test outputs
+coverage
+
+# Public files
+public/*
+
+# Other configs
+.next-env.d.ts
