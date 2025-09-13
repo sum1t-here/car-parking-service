@@ -1,13 +1,13 @@
-import { getServerSession } from 'next-auth/next'
-import { authOptions } from '@/libs/auth'
-import { SignOut } from '@/components/buttons.component'
-import { redirect } from 'next/navigation'
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from '@/libs/auth';
+import { SignOut } from '@/components/buttons.component';
+import { redirect } from 'next/navigation';
 
 export default async function Dashboard() {
-    const session = await getServerSession(authOptions)
+    const session = await getServerSession(authOptions);
 
     if (!session || !session.user.role) {
-        redirect('/user/signin?error=missing-role')
+        redirect('/user/signin?error=missing-role');
     }
 
     return (
@@ -16,5 +16,5 @@ export default async function Dashboard() {
             <pre>{JSON.stringify(session, null, 2)}</pre>
             <SignOut />
         </div>
-    )
+    );
 }

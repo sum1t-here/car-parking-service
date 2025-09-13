@@ -1,31 +1,31 @@
-'use client'
+'use client';
 
-import { signIn } from 'next-auth/react'
-import { useSearchParams } from 'next/navigation'
-import { useState } from 'react'
+import { signIn } from 'next-auth/react';
+import { useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 
 export default function SignInPage() {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [error, setError] = useState<string | null>(null)
-    const searchParams = useSearchParams()
-    const error_ = searchParams.get('error')
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState<string | null>(null);
+    const searchParams = useSearchParams();
+    const error_ = searchParams.get('error');
 
     const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault()
-        setError(null)
+        e.preventDefault();
+        setError(null);
 
         const res = await signIn('credentials', {
             redirect: true,
             email,
             password,
             callbackUrl: '/user/dashboard', // after login redirect
-        })
+        });
 
         if (res?.error) {
-            setError('Invalid credentials')
+            setError('Invalid credentials');
         }
-    }
+    };
 
     return (
         <div className="flex items-center justify-center h-screen">
@@ -75,5 +75,5 @@ export default function SignInPage() {
                 )}
             </form>
         </div>
-    )
+    );
 }
